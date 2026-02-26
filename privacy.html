@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — ContextSwitchAI</title>
+<meta name="description" content="Privacy policy for the ContextSwitchAI Chrome extension. No data collection. No servers. Everything stays on your device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080a0f;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --border: #1a2332;
+    --border-hi: #243244;
+    --green: #1af090;
+    --green-dim: #0d8c50;
+    --green-bg: rgba(26,240,144,0.06);
+    --text: #e8edf4;
+    --text2: #7a8fa8;
+    --text3: #3a4f68;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(26,240,144,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,240,144,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 80px);
+    height: 64px;
+    background: rgba(8,10,15,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--green); }
+
+  nav a.back {
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  nav a.back:hover { color: var(--text); }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 120px clamp(20px, 5vw, 48px) 80px;
+  }
+
+  /* Header */
+  .pp-header {
+    margin-bottom: 64px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pp-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .pp-header h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .pp-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .pp-meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .pp-meta-item strong {
+    color: var(--text2);
+    font-weight: 500;
+  }
+
+  /* TL;DR Box */
+  .tldr {
+    background: var(--green-bg);
+    border: 1px solid rgba(26,240,144,0.2);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 60px;
+  }
+
+  .tldr-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .tldr-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .tldr ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tldr li {
+    font-size: 14px;
+    color: var(--text2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tldr li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Content */
+  .pp-section {
+    margin-bottom: 52px;
+  }
+
+  .pp-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin-bottom: 16px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pp-section h2::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 20px;
+    background: var(--green);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .pp-section p {
+    font-size: 15px;
+    color: var(--text2);
+    margin-bottom: 14px;
+    line-height: 1.75;
+  }
+
+  .pp-section p:last-child { margin-bottom: 0; }
+
+  .pp-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .pp-section li {
+    font-size: 14.5px;
+    color: var(--text2);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .pp-section li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
+  }
+
+  /* Permission table */
+  .perm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 13.5px;
+  }
+
+  .perm-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  .perm-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .perm-table tr:last-child td { border-bottom: none; }
+
+  .perm-table td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    white-space: nowrap;
+    width: 150px;
+  }
+
+  .perm-table tr:hover td {
+    background: var(--bg2);
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  .highlight-box strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Contact */
+  .contact-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 60px;
+  }
+
+  .contact-box h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .contact-box p {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 8px;
+  }
+
+  .contact-box a {
+    color: var(--green);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .contact-box a:hover { text-decoration: underline; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+  }
+
+  footer .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text2);
+  }
+
+  footer a {
+    font-size: 12px;
+    color: var(--text3);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span>🧠</span>
+    ContextSwitch<span>AI</span>
+  </a>
+  <a href="index.html" class="back">← Back to home</a>
+</nav>
+
+<div class="page">
+
+  <div class="pp-header">
+    <p class="pp-eyebrow">// legal</p>
+    <h1>Privacy Policy</h1>
+    <div class="pp-meta">
+      <span class="pp-meta-item"><strong>Extension:</strong> ContextSwitchAI</span>
+      <span class="pp-meta-item"><strong>Version:</strong> 18.0</span>
+      <span class="pp-meta-item"><strong>Last updated:</strong> June 2025</span>
+      <span class="pp-meta-item"><strong>Effective:</strong> June 2025</span>
+    </div>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <p class="tldr-label">// tl;dr — the short version</p>
+    <p class="tldr-title">We collect absolutely nothing. Here's what that means in practice:</p>
+    <ul>
+      <li>No data is ever sent to any external server. There is no server.</li>
+      <li>No analytics, no tracking pixels, no usage telemetry of any kind.</li>
+      <li>All processing happens locally inside your browser on your device.</li>
+      <li>Exported files are saved directly to your downloads folder — not to any cloud.</li>
+      <li>No account, login, or email address is ever required.</li>
+      <li>No third-party libraries or services are loaded at runtime.</li>
+    </ul>
+  </div>
+
+  <!-- 1 -->
+  <div class="pp-section">
+    <h2>Who we are</h2>
+    <p>ContextSwitchAI is a free, open-source Chrome browser extension. It has no corporate entity, no paid tier, no subscription, and no business model that depends on your data. The extension is developed and maintained as a personal project and distributed through the Chrome Web Store at no cost.</p>
+    <p>This privacy policy describes how the extension handles information when you use it.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="pp-section">
+    <h2>What data we collect</h2>
+    <p><strong style="color:var(--text)">We do not collect any personal data.</strong></p>
+    <p>The extension does not collect, store, transmit, or share any personal information, usage data, browsing history, conversation content, or any other data. There is no analytics integration, no crash reporting service, no remote logging of any kind.</p>
+    <div class="highlight-box">
+      <strong>The extension has no backend server, no database, and no network requests of its own.</strong> Every operation — parsing conversations, compressing text, building the JSON export, attaching files to AI chat inputs — happens entirely inside your browser process and never leaves your device.
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="pp-section">
+    <h2>How your conversation data is handled</h2>
+    <p>When you click "Export Chat Memory," the extension reads the text content of the current AI chat page using the browser's DOM APIs. This content is:</p>
+    <ul>
+      <li>Processed entirely in memory within your browser tab</li>
+      <li>Compressed and formatted into a CCMF JSON structure</li>
+      <li>Saved to your local <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">Downloads</code> folder via the Chrome Downloads API</li>
+      <li>Optionally stored temporarily in <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">chrome.storage.local</code> (your browser's local storage) so it can be automatically attached when you navigate to another AI platform in the same session</li>
+    </ul>
+    <p>This locally stored data never leaves your browser. It is not synced via <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">chrome.storage.sync</code>. It is not sent to any remote endpoint.</p>
+    <p>You can clear this data at any time by clicking the reset button (↺) in the extension popup, or by clearing your browser's extension storage in <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">chrome://settings</code>.</p>
+  </div>
+
+  <!-- 4 -->
+  <div class="pp-section">
+    <h2>Permissions explained</h2>
+    <p>The extension requests the following Chrome permissions. Each one is used for a specific, limited purpose described below:</p>
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th>Why it's needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>activeTab</td>
+          <td>To read the current AI chat page's DOM when you click Export. The extension only accesses the tab you are actively using.</td>
+        </tr>
+        <tr>
+          <td>scripting</td>
+          <td>To inject the content script that parses the conversation and to read selected text on the page when you open the Notes panel.</td>
+        </tr>
+        <tr>
+          <td>downloads</td>
+          <td>To save the exported JSON or ZIP file directly to your Downloads folder without requiring you to manually choose a save location each time.</td>
+        </tr>
+        <tr>
+          <td>storage</td>
+          <td>To temporarily hold your exported conversation data in <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">chrome.storage.local</code> so it can be auto-attached to a new AI chat tab in the same session. Also used to persist your notes between popup opens.</td>
+        </tr>
+        <tr>
+          <td>tabs</td>
+          <td>To open a new tab for the target AI platform and to detect when that tab has finished loading so the memory file can be attached at the right moment.</td>
+        </tr>
+        <tr>
+          <td>host_permissions</td>
+          <td>To allow the content scripts to run on the specific AI platform domains (chatgpt.com, claude.ai, gemini.google.com, etc.). The extension only runs on these explicitly listed domains.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:20px">
+      <strong>No permission grants access to your browsing history, bookmarks, passwords, cookies, or any other browser data.</strong> The extension only ever reads content from the specific AI chat pages it is explicitly authorised to access.
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="pp-section">
+    <h2>Third-party services</h2>
+    <p>The extension does not use, load, or communicate with any third-party services, APIs, analytics platforms, advertising networks, or CDNs at runtime. All code that executes is bundled within the extension package itself.</p>
+    <p>The extension interacts with the AI platforms you visit (ChatGPT, Claude, Gemini, etc.) only insofar as it reads their page content and attaches files to their chat input. This interaction is subject to each platform's own privacy policy and terms of service. ContextSwitchAI has no affiliation with any of these platforms.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="pp-section">
+    <h2>Children's privacy</h2>
+    <p>This extension is not directed at children under the age of 13. We do not knowingly collect any information from children. Since the extension collects no information from anyone, there is no special handling required for minors.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="pp-section">
+    <h2>Data security</h2>
+    <p>Since no data leaves your device, the security of your conversation exports is entirely within your control. The exported JSON files are stored in your local Downloads folder and are subject to the same security as all other files on your computer.</p>
+    <p>We recommend treating exported conversation files with the same care you would apply to any sensitive document, particularly if the conversations contain personal, financial, or confidential information.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="pp-section">
+    <h2>Changes to this policy</h2>
+    <p>If we make material changes to this privacy policy — for example, if a future version of the extension adds any form of network functionality — we will update the "Last updated" date above and increment the extension version. We will not introduce data collection without first updating this policy and making the change visible in the Chrome Web Store listing.</p>
+    <p>The current version of this policy always applies to the current version of the extension.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="pp-section">
+    <h2>Your rights</h2>
+    <p>Because we collect no personal data, there is no data to access, correct, export, or delete. If you wish to remove all locally stored extension data from your browser, you can do so by:</p>
+    <ul>
+      <li>Clicking the reset button (↺) in the extension popup to clear the current session's exported data</li>
+      <li>Going to <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">chrome://settings/siteData</code> and clearing storage for the extension</li>
+      <li>Uninstalling the extension, which removes all associated local storage</li>
+    </ul>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-box">
+    <h2>Contact</h2>
+    <p>If you have any questions about this privacy policy or the extension's data practices, you can reach us at:</p>
+    <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+    <p style="margin-top:12px; font-size:13px; color:var(--text3)">Please replace this email with your actual contact address before publishing.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">🧠 ContextSwitchAI</div>
+  <a href="index.html">← Home</a>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">Privacy Policy · v18.0</span>
+</footer>
+
+</body>
+</html>
